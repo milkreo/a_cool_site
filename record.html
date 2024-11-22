@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解題紀錄</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li><a href="index.html">主頁</a></li>
+                <li><a href="record.html">程式解題紀錄</a></li>
+                <li><a href="project.html">專題內容與進度</a></li>
+                <li><a href="card.html">小名片</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page" id="record">
+        <h1>解題紀錄</h1>
+
+        <!-- 成績表格 -->
+        <table>
+            <thead>
+                <tr>
+                    <th>考試日期</th>
+                    <th>解題數</th>
+                    <th>排名</th>
+                    <th>排名比例</th>
+                    <th>評等</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2024-10-15</td>
+                    <td>5 / 7</td>
+                    <td>5 / 2586</td>
+                    <td>0.2%</td>
+                    <td>專業級：熟悉各種基礎的演算法、資料結構，並具有良好的程式編寫能力。</td>
+                </tr>
+                <tr>
+                    <td>2024-05-21</td>
+                    <td>5 / 7</td>
+                    <td>50 / 2406</td>
+                    <td>2.1%</td>
+                    <td>專業級：熟悉各種基礎的演算法、資料結構，並具有良好的程式編寫能力。</td>
+                </tr>
+                <tr>
+                    <td>2024-04-23</td>
+                    <td>4 / 7</td>
+                    <td>151 / 2668</td>
+                    <td>5.7%</td>
+                    <td>專業級：熟悉各種基礎的演算法、資料結構，並具有良好的程式編寫能力。</td>
+                </tr>
+                <tr>
+                    <td>2023-12-12</td>
+                    <td>3 / 7</td>
+                    <td>163 / 2643</td>
+                    <td>6.2%</td>
+                    <td>進階級：熟悉程式設計的邏輯概念，能以程式克服一般常見的問題。</td>
+                </tr>
+                <tr>
+                    <td>2023-10-17</td>
+                    <td>3 / 7</td>
+                    <td>167 / 2474</td>
+                    <td>6.8%</td>
+                    <td>進階級：熟悉程式設計的邏輯概念，能以程式克服一般常見的問題。</td>
+                </tr>
+                <tr>
+                    <td>2023-03-22</td>
+                    <td>4 / 7</td>
+                    <td>99 / 2561</td>
+                    <td>3.9%</td>
+                    <td>專業級：熟悉各種基礎的演算法、資料結構，並具有良好的程式編寫能力。</td>
+                </tr>
+                <tr>
+                    <td>2021-10-19</td>
+                    <td>3 / 7</td>
+                    <td>163 / 2097</td>
+                    <td>7.8%</td>
+                    <td>進階級：熟悉程式設計的邏輯概念，能以程式克服一般常見的問題。</td>
+                </tr>
+                <tr>
+                    <td>2021-03-23</td>
+                    <td>2 / 7</td>
+                    <td>598 / 2394</td>
+                    <td>25%</td>
+                    <td>中級：具備基礎的程式編寫能力，能以程式處理簡單問題。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 折線圖 -->
+        <h2>排名變化折線圖</h2>
+        <canvas id="rankingChart" width="600" height="300"></canvas>
+
+        <h1></h1>
+        <h1></h1>
+    </main>
+
+    <script>
+        const ctx = document.getElementById('rankingChart').getContext('2d');
+
+        // 排名數據
+        const rankingData = [5, 50, 151, 163, 167, 99, 163, 598].reverse();
+        const labels = ["2024-10-15", "2024-05-21", "2024-04-23", "2023-12-12", "2023-10-17", "2022-03-22", "2021-10-19", "2021-03-23"].reverse();
+
+        // 建立折線圖
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '排名',
+                    data: rankingData,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        reverse: true, // 排名越高，數值越小
+                        title: {
+                            display: true,
+                            text: '排名'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
