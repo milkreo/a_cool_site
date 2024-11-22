@@ -1,2 +1,2 @@
-# a_cool_site
+# a_cool_website
 XML homework
